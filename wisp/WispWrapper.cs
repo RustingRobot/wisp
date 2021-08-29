@@ -1,18 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Diagnostics;
+using wisp.Utilities;
 
 namespace wisp
 {
-    public class wispEngine : Game
+    public class wispWrapper : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-
-        public wispEngine()
+        
+        public wispWrapper()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            Globals.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -23,13 +23,18 @@ namespace wisp
         }
 
         protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+        { 
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            Texture2D texture = new Texture2D(GraphicsDevice, 1, 1);
+            Color[] data = new Color[1];
+            data[0] = Color.White;
+            texture.SetData(data);
+            Primitives.pixel = texture;
         }
 
         protected override void Update(GameTime gameTime)
         {
-            Debug.WriteLine("wisp update baby!!");
             base.Update(gameTime);
         }
 
@@ -39,9 +44,9 @@ namespace wisp
             base.Draw(gameTime);
         }
 
-        public void ping()
+        protected void LateDraw(GameTime gameTime)
         {
-            Debug.WriteLine("pong");
+
         }
     }
 }
