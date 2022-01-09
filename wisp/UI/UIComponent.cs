@@ -5,10 +5,14 @@ using System.Text;
 
 namespace wisp.UI
 {
-    class UIComponent
+    abstract class UIComponent
     {
-        public UIEntity entity;
-
+        public UIEntity owner;
+        public bool enabled, visible;
         public virtual void Update(GameTime gameTime) { }
+        public virtual void Draw(GameTime gameTime) { }
+
+        public virtual void Initialize() { }
+        public virtual void Delete() { }
     }
 }

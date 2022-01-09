@@ -9,32 +9,43 @@ namespace wisp.UI
     class UIEntity
     {
         public Vector2 pos, dim;
+        public bool enabled = true, visible = true;
         
         public int ID;
         private List<UIComponent> components = new List<UIComponent>();
-
-        private UIEntity parent;
-        private List<UIEntity> children = new List<UIEntity>();
-
-
-        private direction Orientation = direction.vertical;
+        private Dictionary<Type, UIComponent> componentDict; //inspired by monofoxe
 
         public void AddComponent(UIComponent component)
         {
+            componentDict.Add(component.GetType(), component);
             components.Add(component);
-            component.entity = this;
+            component.owner = this;
+            component.Initialize();
         }
 
-        public void Update()
+        public void RemoveComponent(Type type)
         {
-            foreach (var child in children)
-                child.Update();
+            if(componentDict.TryGetValue(type, out UIComponent tempComp))
+            {
+                tempComp.Delete();
+                componentDict.Remove(type);
+                components.Remove(tempComp);
+                tempComp.owner = null;
+            }
         }
 
-        public void Draw()
+        public T GetComponent<T>() where T : UIComponent => (T)componentDict[typeof(T)];
+        
+        public bool HasComponent(Type type) => componentDict.ContainsKey(type);
+
+        public bool TryGetComponent<T>(out T component) where T : UIComponent
         {
-            foreach (var child in children)
-                child.Draw();
+            var result = componentDict.TryGetValue(typeof(T), out UIComponent c);
+            component = (T)c;
+            return result;
         }
+        
+        public bool TryGetComponent(out UIComponent component, Type type) =>
+            componentDict.TryGetValue(type, out component);
     }
 }
