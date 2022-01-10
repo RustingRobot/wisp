@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace wisp.Utilities
+namespace wisp.Tools
 {
     public static class Win
     {

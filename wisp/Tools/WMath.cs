@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace wisp.Utilities
+namespace wisp.Tools
 {
     public static class WMath
     {

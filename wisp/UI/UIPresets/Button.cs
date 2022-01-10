@@ -5,7 +5,7 @@ using System.Text;
 
 namespace wisp.UI.UIPresets
 {
-    class Button : UIEntity
+    class Button : Entity
     {
         public Button()
         {

@@ -3,11 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace wisp.UI
+namespace wisp.EC
 {
-    abstract class UIComponent
+    public abstract class Component
     {
-        public UIEntity owner;
+        protected Component()
+        {
+            ComponentManager.Register(this);
+        }
+
+        public Entity owner;
         public bool enabled, visible;
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw(GameTime gameTime) { }
