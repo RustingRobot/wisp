@@ -4,6 +4,7 @@ using System.Text;
 
 namespace wisp.EC.ComponentPresets
 {
+    public enum direction { horizontal, vertical};
     class CContainer : Component
     {
         private Entity parent;

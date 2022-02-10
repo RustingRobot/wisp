@@ -4,7 +4,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-using wisp.Utilities;
+using wisp.Tools;
 #endregion
 
 namespace wisp.input
@@ -73,7 +73,7 @@ namespace wisp.input
 
         public virtual bool LeftClick()
         {
-            if (newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if (newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Win.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Win.ScreenHeight)
             {
                 return true;
             }
@@ -83,7 +83,7 @@ namespace wisp.input
         public virtual bool LeftClickHold()
         {
             bool holding = false;
-            if (newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if (newMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Win.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Win.ScreenHeight)
             {
                 holding = true;
 
@@ -107,7 +107,7 @@ namespace wisp.input
 
         public virtual bool RightClick()
         {
-            if (newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if (newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton != ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Win.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Win.ScreenHeight)
             {
                 return true;
             }
@@ -117,7 +117,7 @@ namespace wisp.input
         public virtual bool RightClickHold()
         {
             bool holding = false;
-            if (newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Globals.screenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Globals.screenHeight)
+            if (newMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Pressed && newMouse.Position.X >= 0 && newMouse.Position.X <= Win.ScreenWidth && newMouse.Position.Y >= 0 && newMouse.Position.Y <= Win.ScreenHeight)
             {
                 holding = true;
 

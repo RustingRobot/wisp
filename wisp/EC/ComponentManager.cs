@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using wisp.EC.ComponentPresets;
 
@@ -8,7 +9,7 @@ namespace wisp.EC
 {
     class ComponentManager //the idea: avoid at least some CPU cache misses by executing all components bundled by their declaring type
     {  
-        private static Dictionary<Type, List<Component>> UpdateRegistry, DrawRegistry;
+        private static Dictionary<Type, List<Component>> UpdateRegistry = new Dictionary<Type, List<Component>>(), DrawRegistry = new Dictionary<Type, List<Component>>();
 
         public static void Register(Component component)
         {

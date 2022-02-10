@@ -5,15 +5,13 @@ using System.Text;
 
 namespace wisp.EC //EC system heavily inspired by monofoxe
 {
-    public enum direction { horizontal, vertical };
     public class Entity
     {
-        public Vector2 pos, dim;
         public bool enabled = true, visible = true;
         
         public int ID;
         private List<Component> components = new List<Component>();
-        private Dictionary<Type, Component> componentDict;
+        private Dictionary<Type, Component> componentDict = new Dictionary<Type, Component>();
 
         public Component AddComponent(Component component)
         {
@@ -41,5 +39,14 @@ namespace wisp.EC //EC system heavily inspired by monofoxe
         public T GetComponent<T>() where T : Component => (T)componentDict[typeof(T)];
         
         public bool HasComponent(Type type) => componentDict.ContainsKey(type);
+
+        //syntax sugar functions:
+        public void AddBatch(params Component[] components)
+        {
+            foreach (Component comp in components)
+                AddComponent(comp);
+        }
+
+        public T Get<T>() where T : Component => (T)componentDict[typeof(T)];
     }
 }

@@ -14,14 +14,7 @@ namespace wisp.Tools
 
         public static bool BoxCollision(Vector2 P1, Vector2 D1, Vector2 P2, Vector2 D2) //basic AABB
         {
-            if (P1.X < P2.X + D2.X &&
-               P1.X + D1.X > P2.X &&
-               P1.Y < P2.Y + D2.Y &&
-               P1.Y + D1.Y > P2.Y)
-            {
-                return true;
-            }
-            return false;
+            return P1.X < P2.X + D2.X && P1.X + D1.X > P2.X && P1.Y < P2.Y + D2.Y && P1.Y + D1.Y > P2.Y;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace wisp.EC
         }
 
         public Entity owner;
-        public bool enabled, visible;
+        public bool enabled = true, visible = true;
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw(GameTime gameTime) { }
 
